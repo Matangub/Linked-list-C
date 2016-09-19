@@ -24,8 +24,6 @@ void destroyList(Node *list) {
   Node *nextNode = (Node*) (*list).next;
 
   free(list);
-  (*list).data = NULL;
-  (*list).next = NULL;
 
   if( nextNode ){
     destroyList(nextNode);
@@ -50,52 +48,33 @@ Node *getFinalNode(Node *list) {
 
 void printListInt(Node *node) {
 
-  // Node *myList = (Node*) node;
-  // int *value = (int*) myList -> data;
-  // printf( "\nLast node value: %d\n", *value );
-
   if( node ) {
-    printf(" aaa ");
-    // int *value = (int*) node -> data;
-    // printf("value:%d \n", *value);
-    // printListInt( node->next );
+    int *value = (int*) node -> data;
+
+    if(value) {
+
+      printf("value:%d \n", *value);
+      printListInt( node->next );
+    }
   }
 }
 
-// void printLastNode(Node *list) {
-//
-//   Node *myStruct;
-//   int *value;
-//
-//   if(1) {
-//
-//     if( getFinalNode(list) -> data ) {
-//       myStruct = (Node*) getFinalNode(list);
-//       value = (int*) myStruct -> data;
-//       printf( "\nLast node value: %d\n", *value );
-//     }
-//     else {
-//       printf("\nList is empty!");
-//     }
-//   }
-// }
-//
-// void printFirstNode(Node *list) {
-//
-//   if(1) {
-//
-//     if( list -> data) {
-//
-//       int *value = (int*) list -> data;
-//
-//       printf( "\nfirst node value: %d\n", *value );
-//     }
-//     else {
-//
-//       printf( "\nfirst node is empty\n" );
-//     }
-//   }
-// }
+void removeNode( Node* list, int index ) {
+
+  Node *currentNode = list;
+  int myIndex = 0;
+
+  while( currentNode ->next ) {
+
+    if(myIndex == index) {
+      free(currentNode);
+      break;
+    }
+
+    currentNode = (*list).next;
+    ++myIndex;
+  }
+}
 
 void append( Node *list, void *value ) {
 
