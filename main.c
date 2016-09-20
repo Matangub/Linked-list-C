@@ -31,14 +31,15 @@ int main() {
   // printNodes(list);
   printListInt(list);
 
-  printf("\nremoving node at position 2:\n");
-  removeNode( list, 3 );
+  // printf("\nremoving node at position 2:\n");
+  // removeNode( list, 3 );
+  
+  printf("\nDestroying list:\n");
+  destroyList(list);
 
   printf("\nPrinting list again:\n");
   printListInt(list);
 
-  printf("\nDestroying list:\n");
-  destroyList(list);
 
   return 0;
 }
